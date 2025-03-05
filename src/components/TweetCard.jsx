@@ -1,17 +1,24 @@
-import React from "react";
+import { Box, Text, Link, VStack, Heading} from "@chakra-ui/react";
 
 const TweetCard = ( { tweet } ) =>
 {
   return (
-    <div style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px" }}>
-      <h3>
-        <a href={tweet.url} target="_blank" rel="noopener noreferrer" style={{ color: "blue" }}>
-          View Tweet
-        </a>
-      </h3>
-      <p style={{ color: "#333" }}>{tweet.text}</p>
-      <p style={{ fontWeight: "bold", color: "green" }}>{tweet.comment}</p>
-    </div>
+    <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
+      <VStack align="start">
+        <Heading fontSize="md">
+          <Link href={tweet.url} isExternal color="blue.400">
+            View Tweet
+          </Link>
+        </Heading>
+        <Text fontSize="sm" color="gray.600">
+          {tweet.text}
+        </Text>
+    
+        <Text fontWeight="bold" color="green.500">
+          {tweet.comment}
+        </Text>
+      </VStack>
+    </Box>
   );
 };
 

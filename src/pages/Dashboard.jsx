@@ -1,13 +1,13 @@
-import React from "react";
+import { Container, Heading } from "@chakra-ui/react";
 import TweetList from "../components/TweetList";
 
 const Dashboard = () =>
 {
   return (
-    <div style={{ maxWidth: "600px", margin: "20px auto", padding: "10px" }}>
-      <h1 style={{ marginBottom: "20px", color: "black" }}>Tweet Comment Generator</h1>
+    <Container maxW="container.md" p={5}>
+      <Heading mb={5} color="black">Tweet Comment Generator</Heading>
       <TweetList />
-    </div>
+    </Container>
   );
 };
 

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { VStack, Spinner, Alert,  } from "@chakra-ui/react";
 import TweetCard from "./TweetCard";
 
 const TweetList = () =>
@@ -8,7 +9,7 @@ const TweetList = () =>
 
   useEffect( () =>
   {
-    fetch( "https://your-railway-url.com/tweets" ) // Replace with your API URL
+    fetch( "https://your-railway-url.com/tweets" ) // Replace with Railway API URL
       .then( ( res ) => res.json() )
       .then( ( data ) =>
       {
@@ -23,19 +24,23 @@ const TweetList = () =>
   }, [] );
 
   if( loading ) {
-    return <p>Loading tweets...</p>;
+    return <Spinner size="xl" />;
   }
 
   if( tweets.length === 0 ) {
-    return <p style={{ color: "red" }}>No tweets found.</p>;
+    return (
+      <Alert status="warning">
+        No tweets found.
+      </Alert>
+    );
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <VStack spacing={4}>
       {tweets.map( ( tweet, index ) => (
         <TweetCard key={index} tweet={tweet} />
       ) )}
-    </div>
+    </VStack>
   );
 };
 
